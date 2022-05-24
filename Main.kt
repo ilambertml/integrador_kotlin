@@ -15,11 +15,13 @@ fun main() {
     val car2 = Vehicle("AAAA111", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
 
 
-    val parking = Parking(mutableSetOf(car, motorCycle, miniBus, bus, car2))
+    val parking = Parking(mutableSetOf(car, motorCycle, miniBus, bus))
 
     println(parking.vehicles.contains(car))
     println(parking.vehicles.contains(motorCycle))
     println(parking.vehicles.contains(miniBus))
     println(parking.vehicles.contains(bus))
-    println(parking.vehicles.contains(car2))
+
+    val isCar2Inserted = parking.vehicles.add(car2)
+    println(isCar2Inserted)
 }
