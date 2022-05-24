@@ -23,5 +23,10 @@ fun main() {
     println(parking.vehicles.contains(bus))
 
     val isCar2Inserted = parking.vehicles.add(car2)
-    println(isCar2Inserted)
+    println("Car 2 repeted is inserted: "+isCar2Inserted)
+
+    //put vehicles into parking. Test fun add
+    val car3 = Vehicle("AAAA222", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
+    if (parking.addVehicle(car3)) println("Welcome to AlkeParking!") else println("Sorry, the check-in failed")
+
 }
