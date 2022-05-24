@@ -8,7 +8,7 @@ import com.example.myapplication.VehicleType
  * agregamos nullable con el ?
  */
 
-data class Vehicle(val plate: String,val type: VehicleType,val checkInTime: Long,val discountCard?: String) {
+data class Vehicle(val plate: String,val type: VehicleType,val checkInTime: Long,val discountCard: String?) {
     override fun equals(other: Any?): Boolean {
         if (other is Vehicle) {
             return this.plate == other.plate
