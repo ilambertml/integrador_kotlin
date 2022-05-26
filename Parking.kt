@@ -1,5 +1,7 @@
 package com.example.myapplication.model
 
+import java.util.*
+
 
 /**
  * @param vehicles: se define como un set porque es mas rapido para realizar operaciones de pertenencia, ademas de que no precisamos orden
@@ -19,12 +21,13 @@ data class Parking(val vehicles: MutableSet<Vehicle>) {
         }
 
         fun searchVehicle(plate: String): Vehicle? {
-            var vehicleFound : Vehicle? = null
+            var vehicleFound : Vehicle = Vehicle(plate, VehicleType.CAR, Calendar.getInstance().timeInMillis, "")
             vehiclesList.forEach{
-                if (it.plate == plate) vehicleFound = it
+                if (vehicleFound.equals(it)) vehicleFound = it
             }
             return vehicleFound
         }
+
 
     }
 }

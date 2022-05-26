@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.model
 
 enum class VehicleType(var price: Int) {
 

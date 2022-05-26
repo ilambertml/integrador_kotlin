@@ -1,6 +1,5 @@
 package com.example.myapplication.model
 
-import com.example.myapplication.VehicleType
 import java.util.*
 
 fun main() {
@@ -27,7 +26,7 @@ fun main() {
  */
 
 
-    val car1 = Vehicle("AAAA111", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
+    val car1 = Vehicle("AAAA111", VehicleType.CAR, Calendar.getInstance().timeInMillis)
     val car2 = Vehicle("AAAA112", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
     val car3 = Vehicle("AAAA113", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
     val car4 = Vehicle("AAAA114", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
@@ -66,10 +65,16 @@ fun main() {
     val onError: ()-> Unit = {println("error")}
 
     //Calendar.getInstance().timeInMillis-car.checkInTime
-    val car =Vehicle("AAAA111", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
-    ParkingSpace(car,  11268000).checkOutVehicle(car.plate, onSucces, onError) //remove car
+    //val carr =Vehicle("AAAA111", VehicleType.CAR, Calendar.getInstance().timeInMillis, "")
+    ParkingSpace(car1,  10740000).checkOutVehicle(car1.plate, onSucces, onError) //remove car
+    //7140000 son 1 hora 59 minutos, $20
+    //7200000 son 2 horas, $20
+    //10740000 son 2 horas 59 min, $40
+    //11880000 son 3 horas 18 min, $50
+    //11580000 son 3 horas 13 min, $45
+    //12600000 son 3 horas 30 min, $50
 
-    println("parking vehicles " + Parking.vehiclesList)
+    //println("parking vehicles " + Parking.vehiclesList)
 
 }
 
