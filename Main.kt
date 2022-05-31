@@ -1,33 +1,27 @@
 package com.example.myapplication.model
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import java.util.*
 
+
+@RequiresApi(Build.VERSION_CODES.O)
 fun main() {
 
 
-   /* val car =
-        Vehicle("AAAA111", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
-    val motorCycle =
-        Vehicle("BBBB111", VehicleType.MOTORCYCLE, Calendar.getInstance().timeInMillis, null)
-    val miniBus = Vehicle("CCCC111", VehicleType.MINIBUS, Calendar.getInstance().timeInMillis, null)
-    val bus = Vehicle("B2B2B111", VehicleType.BUS, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD002")
-    //repeat car
-    val car2 = Vehicle("AAAA111", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
+    //Example Car1 checkIn: set example date in calendar
+    val calendar = Calendar.getInstance()
+    calendar.set(2022,4,31, 10, 0 ,0) // 31-05-2022 10:00:00
+    val checkIn = calendar.time
+
+    //Example Car2 checkIn: set example date in calendar
+    val calendar2 = Calendar.getInstance()
+    calendar2.set(2022,4,31, 12, 0 ,0) // 31-05-2022 10:00:00
+    val checkIn2 = calendar2.time
 
 
-     val parking = Parking(vehiclesSet)
-     println(parking.vehicles.contains(car))
-     println(parking.vehicles.contains(motorCycle))
-     println(parking.vehicles.contains(miniBus))
-     println(parking.vehicles.contains(bus))
-
-     val isCar2Inserted = parking.vehicles.add(car2)
-     println("Car 2 repeted is inserted: "+isCar2Inserted)
- */
-
-
-    val car1 = Vehicle("AAAA111", VehicleType.CAR, Calendar.getInstance().timeInMillis)
-    val car2 = Vehicle("AAAA112", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
+    val car1 = Vehicle("AAAA111", VehicleType.CAR, checkIn.time)
+    val car2 = Vehicle("AAAA112", VehicleType.CAR, checkIn2.time, "DISCOUNT_CARD001")
     val car3 = Vehicle("AAAA113", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
     val car4 = Vehicle("AAAA114", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
     val car5 = Vehicle("AAAA115", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
@@ -48,7 +42,7 @@ fun main() {
     val bus = Vehicle("B2B2B111", VehicleType.BUS, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD002")
 
     //repeat car
-    //val car2 = Vehicle("AAAA111", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
+    val car2Repeat = Vehicle("AAAA112", VehicleType.CAR, Calendar.getInstance().timeInMillis, "DISCOUNT_CARD001")
 
     //put vehicles into parking. Test fun add
     var arrayVehicles = arrayOf(car1,car2,car3,car4,car5,car6,car7,car8,car9,car10,car11,car12,car13,car14,car15,car16,car17,motorCycle,miniBus,bus,car17)
@@ -58,15 +52,19 @@ fun main() {
         i++;
     }
 
+
+    //check out succes
     val onSucces: (Int)-> Unit = {
         println("Your fee is $$it. Come back soon.")
         }
 
+    //check out error
     val onError: ()-> Unit = {println("error")}
+    //check out car1
+    ParkingSpace(car1, Calendar.getInstance().timeInMillis-car1.checkInTime).checkOutVehicle(car1.plate, onSucces, onError)
+    //check out car2
+    ParkingSpace(car2, Calendar.getInstance().timeInMillis-car2.checkInTime).checkOutVehicle(car2.plate, onSucces, onError)
 
-    //Calendar.getInstance().timeInMillis-car.checkInTime
-    //val carr =Vehicle("AAAA111", VehicleType.CAR, Calendar.getInstance().timeInMillis, "")
-    ParkingSpace(car1,  10740000).checkOutVehicle(car1.plate, onSucces, onError) //remove car
     //7140000 son 1 hora 59 minutos, $20
     //7200000 son 2 horas, $20
     //10740000 son 2 horas 59 min, $40
@@ -74,7 +72,8 @@ fun main() {
     //11580000 son 3 horas 13 min, $45
     //12600000 son 3 horas 30 min, $50
 
-    //println("parking vehicles " + Parking.vehiclesList)
+    println("\n//////////////////////////////// CARS IN THE PARKING /////////////////////////")
+    Parking.listVehicles()
 
 }
 
