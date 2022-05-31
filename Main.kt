@@ -1,11 +1,7 @@
 package com.example.myapplication.model
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import java.util.*
 
-
-@RequiresApi(Build.VERSION_CODES.O)
 fun main() {
 
 
